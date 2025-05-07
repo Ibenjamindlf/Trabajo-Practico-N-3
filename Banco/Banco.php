@@ -138,7 +138,7 @@ class Banco{
                 $seRealizo = $unaCuenta->realizarRetiro($montoIng);
                 // $retornoPrueba = ("ingreso al primer if");
                 if (!$seRealizo){
-                    $seRealizo = $unaCuenta->realizarRetiroRed($montoIng);
+                    $seRealizo = $unaCuenta->realizarRetiro($montoIng);
                     // $retornoPrueba = ("ingreso al segundo if");
                 }
             }

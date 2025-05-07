@@ -25,7 +25,7 @@ class CuentaCorriente extends Cuenta{
         return $cadena;
     }
     // Metodo realizarRetiro($montoIng) Redefinido 
-    public function realizarRetiroRed($montoIng){
+    public function realizarRetiro($montoIng){
         $seCompleto = false; # Defino mi variable retorno como falsa
         $resultado = parent::realizarRetiro($montoIng); # Obtengo el valor de la funcion en la clase padre
         $descubierto = $this->getDescubiertoInst(); # Obtengo el valor del descubierto
