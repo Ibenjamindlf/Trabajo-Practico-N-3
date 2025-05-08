@@ -5,9 +5,10 @@ class ProductoImportado extends Producto{
     private $porImpuestoInst;
     // Zona de metodos 
     // Metodo constructor
-    public function __construct($incremento,$impuesto) {
+    public function __construct($incremento,$impuesto,$codigoBarra,$descripcion,$stock,$porcIva,$precioCompra,$objRubro) {
         $this->porIncrementoInst = $incremento;
         $this->porImpuestoInst = $impuesto;
+        parent ::__construct($codigoBarra,$descripcion,$stock,$porcIva,$precioCompra,$objRubro);
     }
     // Metodo de acceso (get's)
     public function getporIncrementoInst(){

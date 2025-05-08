@@ -4,8 +4,9 @@ class ProductoRegional extends Producto{
     private $porcDescuentoInst; # Siendo inst una abreviacion de instancia
     // Zona de metodos
     // Metodo constructor (__construct)
-    public function __construct($porcDescuento) {
+    public function __construct($porcDescuento,$codigoBarra,$descripcion,$stock,$porcIva,$precioCompra,$objRubro) {
         $this->porcDescuentoInst = $porcDescuento;
+        parent ::__construct($codigoBarra,$descripcion,$stock,$porcIva,$precioCompra,$objRubro);
     }
     // Metodo de acceso (get's)
     public function getPorcDescuentoInst(){
