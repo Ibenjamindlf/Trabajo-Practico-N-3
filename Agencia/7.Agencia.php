@@ -58,5 +58,50 @@ class Agencia{
         
         return $cadena;
     }
+    // Metodo incorporarPaquete(objPaqueteTuristico)
+    // Incorpora a la colección de paquetes turísticos un nuevo paquete a la agencia 
+    // siempre y cuando no haya un paquete en la misma fecha al mismo destino. 
+    // Si el paquete pudo ser ingresado el método debe retornar true y false en caso contrario.
+    public function  incorporarPaquete($paqueteTuristicoIng){ #Siendo ing una abreviacion de ingresado
+        $seIngreso = false;
+
+        $paquetes = $this->getColPaquetesInst();
+        $cantPaquetes = count($paquetes);
+        $i=0;
+        while (!$seIngreso && $i<$cantPaquetes){
+            $unPaquete = $paquetes[$i];
+
+            $fechaPaqueteOrg = $unPaquete->getFechaInst();
+            $destinoPaqueteOrg = $unPaquete->getRefDestinoInst();
+            $idDestinoPaqueteOrg = $destinoPaqueteOrg->getIdentificacionInst();
+
+            $fechaPaqueteIng = $paqueteTuristicoIng->getFechaInst();
+            $destinoPaqueteIng = $paqueteTuristicoIng->getRefDestinoInst();
+            $idDestinoPaqueteIng = $destinoPaqueteIng->getIdentificacionInst();
+
+            if ($fechaPaqueteOrg == $fechaPaqueteIng && $idDestinoPaqueteIng == $idDestinoPaqueteOrg){
+                $seIngreso = true;
+            }
+            $i++;
+        }
+
+        if (!$seIngreso){
+            array_push($paquetes,$paqueteTuristicoIng);
+            $this->setColPaquetesInst($paquetes);
+        }
+        return (!$seIngreso);
+    }
+    // Metodo incorporarVenta(objPaquete,tipoDoc,numDoc,cantPer, esOnLine)
+    //  recibe por parámetro el paquete, tipo documento, número de documento, la cantidad de personas que van a realizar el paquete turístico y si se trata o no de una venta on-line (valor true o false). 
+    // El método retorna el importe final que debe ser abanado en caso que la venta pudo concretarse con éxito y -1 en caso contrario.
+    public function incorporarVenta($paqueteIng,$tipoDoc,$numDoc,$cantPer,$esOnLine){ # $esOnLine variable de tipo bool 
+        $importeFinal = -1;
+
+        $ventasRealizadas = $this->getColVentasRealizadasInst();
+        $ventasOnLineRealizadas = $this->getColVentasOnLineRealizadasInst();
+        $todasLasVentas = array_merge($ventasRealizadas,$ventasOnLineRealizadas);
+
+        
+    }
 }
 ?>
