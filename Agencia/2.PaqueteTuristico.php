@@ -15,7 +15,7 @@ class PaqueteTuristico {
         $this->cantPlazasInst = $cantPlazas;
         $this->cantDisponiblesPlazasInst = $cantPlazas;
     }
-    // Metodo de acceso (get's)
+    // Metodo de acceso (get's) 
     public function getFechaInst(){
         return $this->fechaInst;
     }

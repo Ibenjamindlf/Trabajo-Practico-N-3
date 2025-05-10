@@ -4,7 +4,8 @@ class VentaOnLine extends Venta{
     private $porDctoInst; # Siendo inst una abreviacion de instancia
     // Zona de metodos
     // Metodo constructor (__construct)
-    public function __construct($porcentajeDescuento) {
+    public function __construct($fecha,$objPaquete,$cantPersonas,$objCliente,$porcentajeDescuento) {
+        parent ::__construct($fecha,$objPaquete,$cantPersonas,$objCliente);
         $this->porDctoInst = ($porcentajeDescuento/100); // Espero a porcentajeDescuento como un entero
     }
     // Metodo de acceso (get's)
