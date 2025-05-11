@@ -158,8 +158,61 @@ class Agencia{
     }
     // Metodo paqueteMasEcomomico(fecha,destino)
     // retorna el paquete turístico mas económico para una fecha y un destino.
-    public function paqueteMasEcomomico($fecha,$destino){
-        # Continuar por aca 
+    public function paqueteMasEcomomico($fechaIngresada,$destinoIngresado){ 
+        // Obtengo los paquetes realizados en una fecha y a un destino
+        $colPaquetesSimilares = $this->informarPaquetesTuristicos($fechaIngresada,$destinoIngresado);
+        // Como aun no se encontro ningun paquete, incio dos variables como nulas para rellenarlas posterioremente
+        $valorMasBarato = null;
+        $paqueteMasEconomico = null;
+        // Recorro la coleccion con los paquetes de un dia y destino determinado
+        foreach ($colPaquetesSimilares as $unPaquete) {
+        // Cada recorrido lo almaceno y obtengo tanto el destino como el valor por dia
+        $destinoUnPaquete = $unPaquete->getRefDestinoInst();
+        $valorPorDiaUnPaquete = $destinoUnPaquete->getValorPorDiaInst();
+        // Si es el primer paquete o si su valor por día es menor al más barato encontrado hasta ahora
+        if ($paqueteMasEconomico === null || $valorPorDiaUnPaquete < $valorMasBarato) {
+            // Asigno el paquete mas economico 
+            $paqueteMasEconomico = $unPaquete;
+            // Pongo la vara en un valor 
+            $valorMasBarato = $valorPorDiaUnPaquete;
+        }
     }
+    // Retorno el paquete más económico, o null si no se encontró ninguno
+    return $paqueteMasEconomico;
+    }
+    // Metodo informarConsumoCliente(tipoDoc,numDoc)
+    //  retorna todos los paquetes que fueron utilizados por la persona 
+    // identificada con el tipoDoc y numDoc recibidos por parámetro.
+    public function informarConsumoCliente($tipoDocIngresado,$numDocIngresado){
+        // Obtengo las coleccion de ventas online y tradicional, uniendolas en una misma coleccion
+        $coleccionVentas = $this->getColVentasRealizadasInst();
+        $coleccionVentasOnline = $this->getColVentasOnLineRealizadasInst();
+        $todasLasVentas = array_merge($coleccionVentas,$coleccionVentasOnline);
+        // Inicio mi variable retorno como un arreglo vacio
+        $consumoCliente = [];
+        // Recorro y guardo cada venta para hacer el analisis
+        foreach ($todasLasVentas as $unaVenta){
+            // Obtengo el cliente de cada venta
+            $cliente = $unaVenta->getRefClienteInst();
+            // Obtengo el tipo y nro doc de cada cliente
+            $tipoDoc = $cliente->getTipoDocInst();
+            $nroDoc = $cliente->getNroDocInst();
+            // Si el tipo y nro es el mismo al ingresado
+            if ($tipoDocIngresado == $tipoDoc && $numDocIngresado == $nroDoc) {
+                // Obtengo el paquete de esa venta 
+                $paqueteTuristico = $unaVenta->getRefPaqueteTuristicoInst();
+                // Sumo el paquete a la coleccion retornable
+                array_push($consumoCliente,$paqueteTuristico);
+            }
+        }
+        // En el caso que no se haya encontrado paquetes para ese cliente
+        if ($consumoCliente == []){
+            // Digo que el consumo fue nulo para no retornar un arreglo vacio
+            $consumoCliente = null;
+        }
+        // Retorno nulo o la coleccion de consumo 
+        return $consumoCliente;
+    }
+    // Metodo informarPaquetesMasVendido
 }
 ?>
