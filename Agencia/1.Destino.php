@@ -1,4 +1,4 @@
-<?
+<?php
 class Destino{
     // Zona de atributos
     private $identificacionInst; # Siendo inst una abreviacion de instancia

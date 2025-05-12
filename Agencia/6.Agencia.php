@@ -213,7 +213,56 @@ class Agencia{
         // Retorno nulo o la coleccion de consumo 
         return $consumoCliente;
     }
-    // Metodo informarPaquetesMasVendido
-    # Continuar por aca....
+    // // Metodo informarPaquetesMasVendido
+    // // Que hace
+    // public function informarPaquetesMasVendido($anioIngresado,$nIngresado){
+    //     $colVentasRealizadas = $this->getColVentasRealizadasInst();
+    //     $colVentasOnlineRealizadas = $this->getColVentasOnLineRealizadasInst();
+    //     $todasLasVentas = array_merge($colVentasRealizadas,$colVentasOnlineRealizadas);
+
+    //     $ventasMismoAnio = [];
+
+    //     foreach ($todasLasVentas as $unaVenta) {
+    //         $fechaUnaVenta = $unaVenta->getFechaInst();
+    //         $anioUnaVenta = substr($fechaUnaVenta, 0, 4);
+    //         if ($anioUnaVenta == $anioIngresado) {
+    //             array_push($ventasMismoAnio,$unaVenta);
+    //         }
+    //     }
+
+    //     $ventasPorLugar = [];
+
+    //     foreach ($ventasMismoAnio as $venta) {
+    //         $paquete = $venta->getRefPaqueteInst();
+    //         $destino = $paquete->getRefDestinoInst();
+
+    //         $lugar = $destino->getLugarInst();
+    //         $cantPersonas = $venta->getCantPersonasInst();
+    //         foreach ($ as $key => $value) {
+    //             #continuar .....
+    //         }
+    //     }
+    // }
+    
+    // Metodo promedioVentasOnLine()
+    // retorna el promedio de ventas on-line realizadas por la agencia
+    public function promedioVentasOnLine(){
+        $colVentasOnline = $this->getColVentasOnLineRealizadasInst();
+        $totalRecaudadoOnline = 0;
+
+        foreach ($colVentasOnline as $UnaVentaOnline) {
+            $totalRecaudadoOnline += $UnaVentaOnline->darImporteVenta();
+        }
+
+        $cantVentasOnline = count($colVentasOnline);
+
+        if ($cantVentasOnline > 0) {
+            $promedioVentasOnline = $totalRecaudadoOnline / $cantVentasOnline;
+        } else {
+            $promedioVentasOnline = null;
+        }
+
+        return $promedioVentasOnline;
+    }
 }
 ?>
