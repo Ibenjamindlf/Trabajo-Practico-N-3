@@ -232,14 +232,19 @@ class Agencia{
 
     //     $ventasPorLugar = [];
 
-    //     foreach ($ventasMismoAnio as $venta) {
-    //         $paquete = $venta->getRefPaqueteInst();
-    //         $destino = $paquete->getRefDestinoInst();
-
-    //         $lugar = $destino->getLugarInst();
-    //         $cantPersonas = $venta->getCantPersonasInst();
-    //         foreach ($ as $key => $value) {
-    //             #continuar .....
+    //     foreach ($ventasMismoAnio as $unaVenta) {
+    //         $lugarDestino = $unaVenta->getRefPaqueteInst()->getRefDestinoInst()->getLugarInst();
+            
+    //         if ($$ventasPorLugar == []){
+    //                 array_push()
+    //         }
+            
+    //         while (bandera) {
+    //             $lugarDestinoAnidado = $ventasMismoAnio[$i]->getRefPaqueteInst()->getRefDestinoInst()->getLugarInst();
+                
+    //             if ($lugarDestino== $lugarDestinoAnidado ){
+    //                 ventasPorLugar[i][0] += cantPersonas;
+    //             }
     //         }
     //     }
     // }

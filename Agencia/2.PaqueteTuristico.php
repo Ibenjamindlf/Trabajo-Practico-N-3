@@ -6,7 +6,7 @@ class PaqueteTuristico {
     private $refDestinoInst; # Referencia a la clase destino 
     private $cantPlazasInst;
     private $cantDisponiblesPlazasInst;
-    // Zona de metodos
+    // Zona de metodos 
     // Metodo constructor
     public function __construct($fecha,$cantDias,$objDestino,$cantPlazas) {
         $this->fechaInst = $fecha;

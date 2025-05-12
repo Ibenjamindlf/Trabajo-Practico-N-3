@@ -12,7 +12,7 @@ class Venta{
         $this->refPaqueteInst = $objPaquete;
         $this->cantPersonasInst = $cantPersonas;
         $this->refClienteInst = $objCliente;
-    }
+    } 
     // Metodos de acceso (get's)
     public function getFechaInst(){
         return $this->fechaInst;
