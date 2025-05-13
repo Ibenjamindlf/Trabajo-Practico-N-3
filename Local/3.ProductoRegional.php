@@ -25,8 +25,8 @@ class ProductoRegional extends Producto{
         return $cadena;
     }
     // Metodo darPrecioVenta() redefinido 
-    public function calcularPrecioVenta(){
-        $precioVenta = parent::calcularPrecioVenta();
+    public function darPrecioVenta(){
+        $precioVenta = parent::darPrecioVenta();
         $porcDcto = $this->getPorcDescuentoInst();
 
         $diferencia = ($precioVenta * ($porcDcto/100));

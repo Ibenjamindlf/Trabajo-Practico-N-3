@@ -67,7 +67,7 @@ class Producto{
         return $cadena;
     }
     // Metodo darPrecioVenta()
-    public function calcularPrecioVenta(){
+    public function darPrecioVenta(){
         $porcIVA = $this->getPorcIvaInst();
         $precioCompra = $this->getPrecioCompraInst();
         $refRubro = $this->getRefRubroInst();

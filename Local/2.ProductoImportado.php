@@ -35,7 +35,7 @@ class ProductoImportado extends Producto{
     }
     // Metodo darPrecioVenta() redefinido
     public function darPrecioVenta(){
-        $precioVenta = parent::calcularPrecioVenta();
+        $precioVenta = parent::darPrecioVenta();
         $porcIncremento = $this->getporIncrementoInst();
         $porcImpuesto = $this->getporImpuestoInst();
 

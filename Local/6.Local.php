@@ -18,8 +18,14 @@ class Local{
     // Metodo de caracteres (__toString)
     public function __toString()
     {
+        $productos = $this->getColProductos(); 
+        $cadenaProductos = ""; 
+        foreach ($productos as $producto) { 
+            $cadenaProductos .= $producto . "\n"; 
+        }
+
         $cadena = ("\n----Productos en venta----\n");
-        $cadena .= ($this->getColProductos());
+        $cadena .= ($cadenaProductos);
         return $cadena;
     }
     // Metodo incorporarProductoLocal (objProducto)
@@ -29,24 +35,27 @@ class Local{
     // El método retorna verdadero o falso según corresponda.
     public function incorporarProductoLocal ($objProductoIng){ # Siendo ing una abreviacion de ingresado
         $seCompleto = true;
-        $productos = $this->getColProductos();
-        $cantProductos = count($productos);
+        $productos = $this->getColProductos(); 
+        $cantProductos = count($productos); 
         $i = 0;
-        while ($seCompleto && $i<$cantProductos){
-            $unProducto = $productos[$i];
-            $codigoBarraUnProducto = $unProducto->getCodigoBarraInst();
-            $codigoBarraProductoIng = $objProductoIng->getCodigoBarraInst();
-            if ($codigoBarraProductoIng == $codigoBarraUnProducto){
+        while ($seCompleto && $i<$cantProductos){ 
+            $unProducto = $productos[$i]; 
+            $codigoBarraUnProducto = $unProducto->getCodigoBarraInst(); 
+            $codigoBarraProductoIng = $objProductoIng->getCodigoBarraInst(); 
+            if ($codigoBarraProductoIng == $codigoBarraUnProducto){ 
                 $seCompleto = false;
             } 
-        $i++;
+        $i++; 
         }
-        if (!$seCompleto){
+        if ($seCompleto){ 
             array_push($productos,$objProductoIng);
             $this->setColProductos($productos);
-            // $seCompleto = true;
         }
-        return $seCompleto;
+        if ($productos == []) {
+            array_push($productos,$objProductoIng);
+            $this->setColProductos($productos); 
+        }
+        return $seCompleto; 
     }
     // Metodo retornarImporteProducto(codProducto) 
     // Recibe por parámetro el código de un producto 
@@ -66,6 +75,25 @@ class Local{
             $i++;
         }
         return $precioVenta;
+    }
+    // Metodo retornarCostoProductoLocal()
+    // recorre todos los productos de la tienda 
+    // retorna la suma de los costos de cada producto teniendo en cuenta el stock de cada uno.
+    public function retornarCostoProductoLocal(){
+        $productos = $this->getColProductos();
+        $sumatoriaCostoProductoLocal = 0;
+        // Utilizando un while como recorrido total
+        $cantProductos = count($productos);
+        $i = 0;
+        while ($i<$cantProductos){
+            $unProducto = $productos[$i];
+            $precioCompraUnProducto = $unProducto->getPrecioCompraInst();
+            $stockUnProducto = $unProducto->getStockInst();
+            $costoTotalUnProducto = ($precioCompraUnProducto * $stockUnProducto);
+            $sumatoriaCostoProductoLocal = ($sumatoriaCostoProductoLocal+$costoTotalUnProducto);
+            $i++;
+        }
+        return $sumatoriaCostoProductoLocal;
     }
 }
 ?>

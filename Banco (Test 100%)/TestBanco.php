@@ -1,10 +1,10 @@
 <?php
-include_once 'Persona.php';
-include_once 'Cliente.php';
-include_once 'Cuenta.php';
-include_once 'CajaAhorro.php';
-include_once 'CuentaCorriente.php';
-include_once 'Banco.php';
+include_once '1.Persona.php';
+include_once '2.Cliente.php';
+include_once '3.Cuenta.php';
+include_once '4.CuentaCorriente.php';
+include_once '5.CajaAhorro.php';
+include_once '6.Banco.php';
 
 $clienteA = new Cliente(44628595,"Paulo","Dybala",21);
 $clienteB = new Cliente(30226425,"Lionel","Messi",10);
