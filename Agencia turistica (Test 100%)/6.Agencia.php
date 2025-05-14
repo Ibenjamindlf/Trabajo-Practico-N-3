@@ -170,7 +170,7 @@ class Agencia{
         $destinoUnPaquete = $unPaquete->getRefDestinoInst();
         $valorPorDiaUnPaquete = $destinoUnPaquete->getValorPorDiaInst();
         // Si es el primer paquete o si su valor por día es menor al más barato encontrado hasta ahora
-        if ($paqueteMasEconomico === null || $valorPorDiaUnPaquete < $valorMasBarato) {
+        if ($paqueteMasEconomico === null || $valorMasBarato != null && $valorPorDiaUnPaquete < $valorMasBarato) {
             // Asigno el paquete mas economico 
             $paqueteMasEconomico = $unPaquete;
             // Pongo la vara en un valor 
