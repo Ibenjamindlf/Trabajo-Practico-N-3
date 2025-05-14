@@ -4,7 +4,7 @@ class VentaOnLine extends Venta{
     private $porDctoInst; # Siendo inst una abreviacion de instancia
     // Zona de metodos
     // Metodo constructor (__construct)
-    public function __construct($fecha,$objPaquete,$cantPersonas,$objCliente,) {
+    public function __construct($fecha,$objPaquete,$cantPersonas,$objCliente) {
         parent ::__construct($fecha,$objPaquete,$cantPersonas,$objCliente);
         $this->porDctoInst = (0.2); // Valor por defecto 20%
     }
