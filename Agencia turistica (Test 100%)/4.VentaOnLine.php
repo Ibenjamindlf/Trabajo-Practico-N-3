@@ -6,7 +6,7 @@ class VentaOnLine extends Venta{
     // Metodo constructor (__construct)
     public function __construct($fecha,$objPaquete,$cantPersonas,$objCliente,) {
         parent ::__construct($fecha,$objPaquete,$cantPersonas,$objCliente);
-        $this->porDctoInst = (20/100); // Espero a porcentajeDescuento como un entero
+        $this->porDctoInst = (0.2); // Valor por defecto 20%
     }
     // Metodo de acceso (get's)
     public function getPorDctoInst(){
